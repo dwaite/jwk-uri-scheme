@@ -1,11 +1,11 @@
 %%%
-title = "JWT URI Scheme"
-abbrev = "jwt-uri"
+title = "JWK URI Scheme"
+abbrev = "jwk-uri"
 category = "info"
 ipr = "none"
 workgroup = "todo"
 keyword = ["jose", "jwk", "uri"]
-docname = "draft-dwaite-jwt-uri-scheme"
+docname = "draft-dwaite-jwk-uri-scheme"
 
 [seriesInfo]
 name = "Internet-Draft"
@@ -15,8 +15,8 @@ status = "standard"
 [venue]
 group = "todo"
 type = "independent"
-github = "dwaite/jwt-uri-scheme"
-latest = "https://dwaite.github.io/jwt-uri/scheme"
+github = "dwaite/jwk-uri-scheme"
+latest = "https://dwaite.github.io/jwk-uri-scheme/"
 
 stand_alone = "yes"
 smart_quotes = "no"
@@ -30,7 +30,7 @@ symrefs = "yes"
 initials = "D."
 surname = "Waite"
 fullname = "David Waite"
-email = "david+jwturi@alkaline-solutions.com"
+email = "david+jwkuri@alkaline-solutions.com"
 
 %%%
 
@@ -62,7 +62,7 @@ A JWK URI is formatted as a key type and pairs of names and values, sorted in le
 ```
 ## Conversion from a JWK to a URI
 
-A JWT URI represents the minimal set of values necessary to represent a public key for a given key type. This is equivalent to the set of values used for calculating a JWK Thumbprint [RFC7638]. From the example RSA key in 3.1 of that specification:
+A JWK URI represents the minimal set of values necessary to represent a public key for a given key type. This is equivalent to the set of values used for calculating a JWK Thumbprint [RFC7638]. From the example RSA key in 3.1 of that specification:
 
 ``` json
 {
