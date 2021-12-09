@@ -51,18 +51,24 @@ TODO Introduction
 
 # Representation
 
-A JWK URI is formatted as a key type and pairs of names and values, sorted in lexicographical order. The key type, names, and avalues are each delimited by colons. The characters for the key type as well as the names and values are limited to the character set allowed by BASE64URI.
+A JWK URI is formatted as a key type and pairs of names and values, sorted in lexicographical order. The key type, names, and avalues are each delimited by colons.
 
 ```
    JWK = "jwk": <key-type> ":" [* <name> ":" <value>]
    key-type = + CHAR
    name = + CHAR
    value = + CHAR
-   CHAR = [A-Za-z0-9\-_]
+   CHAR = [A-Za-z0-9\-_.]
+
 ```
+
 ## Conversion from a JWK to a URI
 
-A JWK URI represents the minimal set of values necessary to represent a public key for a given key type. This is equivalent to the set of values used for calculating a JWK Thumbprint [RFC7638]. From the example RSA key in 3.1 of that specification:
+A JWK URI represents the minimal set of values necessary to represent a public key for a given key type. This is equivalent to the set of values used for calculating a JWK Thumbprint [RFC7638].
+
+Properties and values (including the key type) are encoded as their string contents. Support for other JSON types and strings outside the supplied character alphabet are not supported.
+
+From the example RSA key in 3.1 of that specification:
 
 ``` json
 {
