@@ -1,12 +1,16 @@
 %%%
 title = "JWT URI Scheme"
 abbrev = "jwt-uri"
-category = info
+category = "info"
 ipr = "none"
 workgroup = "todo"
 keyword = ["jose", "jwk", "uri"]
-docname "draft-dwaite-jwt-uri-scheme"
+docname = "draft-dwaite-jwt-uri-scheme"
 
+[seriesInfo]
+name = "Internet-Draft"
+value = "draft-dwaite-jwk-uri-scheme"
+status = "standard"
 
 [venue]
 group = "todo"
@@ -34,7 +38,7 @@ email = "david+jwturi@alkaline-solutions.com"
 
 The goal is a URI scheme which represents a single cryptographic public key, leveraging the JOSE series of specifications
 
-{{mainmatter}}
+{mainmatter}
 
 # Introduction
 
@@ -87,11 +91,12 @@ The kty parameter is used as the key-type value, while the "n" and "e" parameter
 The corresponding URI is thus:
 
 ```
-jwk:RSA:e:AQAB:n:0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbfAAt
-    VT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMstn64tZ_2W-5JsGY4
-    Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_FDW2QvzqY368QQMicAtaSqzs8KJZ
-    gnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n91CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0
-    fM4lFd2NcRwr3XPksINHaQ-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw
+jwk:RSA:e:AQAB:n:0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbb
+    fAAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMstn64tZ_2
+    W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_FDW2QvzqY368QQMi
+    cAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n91CbOpbISD08qNLyrdkt-bFT
+    WhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHaQ-G_xBniIqbw0Ls1jF44-csFCur-kEg
+    U8awapJzKnqDKgw
 ```
 
 ## Conversion to a JWK
@@ -127,7 +132,7 @@ Ellaborate: No trust mechanism
 
 * Register "jwk" uri
 
-{{backmatter}}
+{backmatter}
 
 # Acknowledgments
 {:numbered="false"}
