@@ -1,37 +1,40 @@
----
-title: "JWT URI Scheme"
-abbrev: "jwt-uri"
-category: info
+%%%
+title = "JWT URI Scheme"
+abbrev = "jwt-uri"
+category = info
+ipr = "none"
+workgroup = "todo"
+keyword = ["jose", "jwk", "uri"]
+docname "draft-dwaite-jwt-uri-scheme"
 
-docname: draft-todo-yourname-protocol-latest
-ipr: trust200902
-area: TODO
-workgroup: TODO
-keyword: Internet-Draft
-venue:
-  group: TODO
-  type: Independent
-  github: dwaite/jwt-uri-scheme
-  latest: https://dwaite.github.io/jwt-uri/scheme
 
-stand_alone: yes
-smart_quotes: no
-pi: [toc, sortrefs, symrefs]
+[venue]
+group = "todo"
+type = "independent"
+github = "dwaite/jwt-uri-scheme"
+latest = "https://dwaite.github.io/jwt-uri/scheme"
 
-author:
- -
-    name: David Waite
-    email: david@alkaline-solutions.com
+stand_alone = "yes"
+smart_quotes = "no"
 
-normative:
+[pi]
+toc = "yes"
+sortrefs = "yes"
+symrefs = "yes"
 
-informative:
+[[author]]
+initials = "D."
+surname = "Waite"
+fullname = "David Waite"
+email = "david+jwturi@alkaline-solutions.com"
 
---- abstract
+%%%
+
+.# Abstract
 
 The goal is a URI scheme which represents a single cryptographic public key, leveraging the JOSE series of specifications
 
---- middle
+{{mainmatter}}
 
 # Introduction
 
@@ -124,9 +127,7 @@ Ellaborate: No trust mechanism
 
 * Register "jwk" uri
 
---- back
+{{backmatter}}
 
 # Acknowledgments
 {:numbered="false"}
-
-TODO acknowledge.
