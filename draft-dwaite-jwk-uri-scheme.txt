@@ -1,0 +1,133 @@
+
+
+
+
+todo                                                            D. Waite
+                                                         9 December 2021
+
+
+                             JWK URI Scheme
+                      draft-dwaite-jwk-uri-scheme
+
+Abstract
+
+   The goal is a URI scheme which represents a single cryptographic
+   public key, leveraging the JOSE series of specifications
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Representation
+     3.1.  Conversion from a JWK to a URI
+     3.2.  Conversion to a JWK
+   4.  Security Considerations
+   5.  IANA Considerations
+   Appendix A.  Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   TODO Introduction
+
+2.  Conventions and Definitions
+
+   {::boilerplate bcp14-tagged}
+
+3.  Representation
+
+   A JWK URI is formatted as a key type and pairs of names and values,
+   sorted in lexicographical order.  The key type, names, and avalues
+   are each delimited by colons.
+
+      JWK = "jwk": <key-type> ":" [* <name> ":" <value>]
+      key-type = + CHAR
+      name = + CHAR
+      value = + CHAR
+      CHAR = [A-Za-z0-9\-_.]
+
+3.1.  Conversion from a JWK to a URI
+
+   A JWK URI represents the minimal set of values necessary to represent
+   a public key for a given key type.  This is equivalent to the set of
+   values used for calculating a JWK Thumbprint [RFC7638].
+
+   Properties and values (including the key type) are encoded as their
+   string contents.  Support for other JSON types and strings outside
+   the supplied character alphabet are not supported.
+
+   From the example RSA key in 3.1 of that specification:
+
+   {
+       "kty": "RSA",
+       "n": "0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbfAAt
+             VT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMstn6
+             4tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_FD
+             W2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9
+             1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINH
+             aQ-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw",
+       "e": "AQAB",
+       "alg": "RS256",
+       "kid": "2011-04-29"
+   }
+
+   As defined in "JSON Web Key (JWK)" [JWK] and "JSON Web Algorithms
+   (JWA)" [JWA], the required members for an RSA public key are:
+
+   *  "kty"
+
+   *  "n"
+
+   *  "e"
+
+   The kty parameter is used as the key-type value, while the "n" and
+   "e" parameters are set as name/value pairs within the URI.  These are
+   used in lexigographical order, i.e. "e" and then "n".  Note that the
+   kty parameter and thus the resulting key-type value are both case-
+   sensitive.
+
+   The corresponding URI is thus:
+
+   jwk:RSA:e:AQAB:n:0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4
+       cbbfAAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMstn
+       64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_FDW2Qvz
+       qY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n91CbOpbISD08
+       qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHaQ-G_xBniIqbw0Ls1
+       jF44-csFCur-kEgU8awapJzKnqDKgw
+
+3.2.  Conversion to a JWK
+
+   The JWK URI can be converted by creating a JSON object, and adding a
+   "kty" property with the key-type specified within the URI.  Then,
+   each name and value pair are added as a key and corresponding string
+   value into the JWK.
+
+   The URI specified above, when converted back to a JWK, will yield:
+
+   {
+       "kty": "RSA",
+       "e": "AQAB",
+       "n": "0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbfAAt
+             VT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMstn6
+             4tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_FD
+             W2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9
+             1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINH
+             aQ-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw"
+   }
+
+4.  Security Considerations
+
+   Ellaborate: No limiting attributes, must be determined by context *
+   "use" * "key_ops" * "alg"
+
+   Ellaborate: No trust mechanism * e.g. no "x5u" / "x5c" / "x5t"
+
+5.  IANA Considerations
+
+   *  Register "jwk" uri
+
+Appendix A.  Acknowledgments
+
+Author's Address
+
+   David Waite
